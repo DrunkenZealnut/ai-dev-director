@@ -19,7 +19,7 @@ def load_config() -> dict:
 
 @click.group()
 def cli():
-    """AI DEV DIRECTOR v0.1.2 - Local Autonomous Orchestrator (Subscription CLIs)"""
+    """AI DEV DIRECTOR v3.1.6 - Local Autonomous Orchestrator (Subscription CLIs)"""
     pass
 
 @cli.command()
