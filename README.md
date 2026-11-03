@@ -56,8 +56,12 @@ pay-per-use API call.
 
 ```bash
 pip install -r requirements.txt
-python -m pytest -q            # 596개 테스트, CLI 없이 스텁으로 돕니다 (약 30분)
+python -m pytest -q            # 596개 테스트, CLI 없이 스텁으로 돕니다 (약 25분)
 ```
+
+2026-11-04 기준 593개 통과, 3개 실패. 실패 3개는 알려진 드리프트입니다: 두 개는 "저장소가 아닌 폴더는 거부"를
+기대하는 옛 UI 테스트인데 v3.0부터 빈 폴더도 자동 준비(greenfield)하도록 바뀌었고, 하나는 스냅샷 제외 목록 픽스처
+드리프트입니다. 안전 게이트·정책·미션 테스트는 모두 통과합니다.
 
 콘솔 켜기 (윈도우):
 
@@ -97,7 +101,7 @@ core/                  orchestrator, mission, autopilot(정책), safety(Scope Gu
 schemas/               ORDER / BuilderResult / ReviewResult / Decision / Provenance (pydantic)
 console/               TRINITY 무대와 작업실 프런트엔드 (의존성 없는 정적 파일)
 scripts/               폴더 선택 도우미, CLI 진단, 실패 run 재시도, 역할 smoke
-tests/                 596 tests (스텁 CLI로 격리; 실제 CLI 통합은 -m integration_cli 로 opt-in)
+tests/                 596 tests (스텁 CLI로 격리, 로컬 설정 파일에 의존하지 않음; 실제 CLI 통합은 -m integration_cli 로 opt-in)
 docs/                  설계·마일스톤 기록
 ```
 
